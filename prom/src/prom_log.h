@@ -188,7 +188,7 @@ static inline char *timestamp(char *buf, size_t buf_size)
 #define PROM_LOG(msg) printf("%s %s %s %s %d %s\n", __DATE__, __TIME__, __FILE__, __FUNCTION__, __LINE__, msg);
 #else
 // #define PROM_LOG(msg)
-#define PROM_LOG(msg) do { char buf[64]; LOGSTDOUT(LOG_INFO, "%s%s", timestamp(buf, sizeof(buf)), msg); } while(0)
+#define PROM_LOG(msg) do { char buf[64]; LOGSTDOUT(LOG_ERR, "%s%s", timestamp(buf, sizeof(buf)), msg); } while(0)
 #endif  // PROM_LOG_ENABLE
 
 #endif  // PROM_LOG_H
