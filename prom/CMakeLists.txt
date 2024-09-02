@@ -103,10 +103,10 @@ set(
 
 include(FindThreads)
 
-add_library(prom SHARED)
+add_library(prom ${PROM_BUILD_TYPE})
 
-target_compile_options(prom PRIVATE "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11")
-target_compile_options(prom PUBLIC "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11")
+target_compile_options(prom PRIVATE "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11" "-fPIC")
+target_compile_options(prom PUBLIC "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11" "-fPIC")
 
 target_include_directories(
     prom

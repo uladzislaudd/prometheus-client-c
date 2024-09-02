@@ -8,4 +8,12 @@ execute_process(
 
 project(prometheus-client-c VERSION ${Version} LANGUAGES C)
 
-add_subdirectory (prom)
+add_subdirectory(prom)
+
+if (DEFINED PROMHTTP_BUILD_TYPE)
+    add_subdirectory(promhttp)
+endif()
+
+if (DEFINED PROM_TEST)
+    add_subdirectory(promtest)
+endif()

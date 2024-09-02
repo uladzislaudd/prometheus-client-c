@@ -42,7 +42,7 @@ link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../prom/build)
 
 include(FindThreads)
 
-add_library(promhttp SHARED)
+add_library(promhttp ${PROMHTTP_BUILD_TYPE})
 
 target_include_directories(
     promhttp
@@ -56,11 +56,11 @@ target_sources(
     PRIVATE ${private_files}
 )
 
-find_library(prom prom HINTS ${CMAKE_CURRENT_SOURCE_DIR}/../prom/build)
+find_library(prom prom HINTS ${CMAKE_ROOT}/build ${CMAKE_ROOT}/.build ${CMAKE_CURRENT_SOURCE_DIR}/../prom/build)
 find_library(microhttpd microhttpd)
 
-target_compile_options(promhttp PRIVATE "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11")
-target_compile_options(promhttp PUBLIC "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11")
+target_compile_options(promhttp PRIVATE "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11"  "-fPIC")
+target_compile_options(promhttp PUBLIC "-Werror" "-Wuninitialized" "-Wall" "-Wno-unused-label" "-std=gnu11"  "-fPIC")
 
 target_link_libraries(promhttp PUBLIC Threads::Threads prom microhttpd)
 
