@@ -138,7 +138,7 @@ int prom_map_destroy(prom_map_t *self) {
 
   r = pthread_rwlock_destroy(self->rwlock);
   if (r) {
-    PROM_LOG(PROM_PTHREAD_RWLOCK_DESTROY_ERROR)
+    PROM_LOG(PROM_PTHREAD_RWLOCK_DESTROY_ERROR);
     ret = r;
   }
 
